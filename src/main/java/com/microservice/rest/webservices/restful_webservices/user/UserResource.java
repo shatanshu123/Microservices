@@ -2,8 +2,9 @@ package com.microservice.rest.webservices.restful_webservices.user;
 
 import java.net.URI;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,12 @@ import jakarta.validation.Valid;
 
 @RestController
 public class UserResource {
-	@Autowired
+	
+	public UserResource(UserDaoService service) {
+		
+		this.service = service;
+	}
+
 	private UserDaoService service;
 
 	@GetMapping("/users")
@@ -25,11 +31,15 @@ public class UserResource {
 	}
 
 	@GetMapping("/users/{id}")
-	public User retrieveAllUser(@PathVariable int id) throws UserNotFoundException{
+	public EntityModel<User> retrieveAllUser(@PathVariable int id) throws UserNotFoundException{
 
 		User user=service.findOne(id);
 		if(user==null)throw new UserNotFoundException("User doesn't exists");
-		return user;
+		EntityModel<User>entityModel= EntityModel.of(user);
+		WebMvcLinkBuilder link= linkTo(methodOn(this.getClass()).retrieveAllUsers());
+		entityModel.add(link.withRel("all-users"));
+		
+		return entityModel;
 	}
 
 	@PostMapping("/users")
