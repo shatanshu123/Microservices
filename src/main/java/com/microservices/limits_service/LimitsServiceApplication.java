@@ -1,13 +1,13 @@
-package com.microservice.rest.webservices.restful_webservices;
+package com.microservices.limits_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestfulWebservicesApplication {
+public class LimitsServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestfulWebservicesApplication.class, args);
+		SpringApplication.run(LimitsServiceApplication.class, args);
 	}
 
 }

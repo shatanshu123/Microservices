@@ -1,10 +1,10 @@
-package com.microservice.rest.webservices.restful_webservices;
+package com.microservices.limits_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestfulWebservicesApplicationTests {
+class LimitsServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
