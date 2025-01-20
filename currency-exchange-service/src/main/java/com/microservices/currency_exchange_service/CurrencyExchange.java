@@ -2,9 +2,17 @@ package com.microservices.currency_exchange_service;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+@Entity
 public class CurrencyExchange {
+	@Id
 	private long id;
+	@Column(name="currencyFrom")
 	private String from;
+	@Column(name="currencyTo")
+
 	private String to;
 	private BigDecimal conversionMultiple;
 	private String environment;
