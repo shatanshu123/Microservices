@@ -1,10 +1,10 @@
-package com.microservices.currency_exchange_service;
+package com.microservice.currency_conversion_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CurrencyExchangeServiceApplicationTests {
+class CurrencyConversionServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
