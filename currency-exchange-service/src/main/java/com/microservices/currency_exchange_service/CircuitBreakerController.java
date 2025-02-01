@@ -21,10 +21,10 @@ public class CircuitBreakerController {
 	public String sampleAPI() {
 		logger.info("Sample API call received");
 		ResponseEntity<String> forEntity = new RestTemplate().getForEntity("http://localhost:8080/some-dummy-url",
-				String.class);
+				String.class );
 		return forEntity.getBody();
 	}
-	@GetMapping("/sample-apis")
+	@GetMapping(" ")
 	@CircuitBreaker(name = "sample-api", fallbackMethod = "hardCodedResponse")
 	@RateLimiter(name="default")
 	@Bulkhead(name="default")
